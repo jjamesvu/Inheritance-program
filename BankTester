@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class BankTester {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        BankAccount x = new BankAccount(500.00, "bankaccount");
+        System.out.println("account balance is $" + x.getBalance());
+
+        System.out.print("enter your deposit amount: ");
+        double depositAmount = input.nextDouble();
+        x.deposit(depositAmount);
+        System.out.println("after your deposit, you have $" + x.getBalance());
+
+        System.out.print("enter your withdrawal amount: ");
+        double withdrawAmount = input.nextDouble();
+        x.withdraw(withdrawAmount);
+        System.out.println("after your withdrawal, you have $" + x.getBalance());
+
+        SavingsAccount y = new SavingsAccount(1000.00, "coolbank", 5.0); // 5% interest rate
+        System.out.println("\nsavings account balance: $" + y.getBalance());
+        y.addInterest();
+        System.out.println("after adding your interest, you have $" + y.getBalance());
+
+        CheckinAccount checking = new CheckinAccount(300.00, "anothercoolbank", 200.00); // $200 overdraft limit
+        System.out.println("\nchecking account balance: $" + checking.getBalance());
+
+        System.out.print("enter your withdrawal amount from checking: ");
+        double checkWithdraw = input.nextDouble();
+        checking.withdraw(checkWithdraw);
+        System.out.println("after withdrawing $" + checkWithdraw + ", you have $" + checking.getBalance());
+
+
+    }
+}
